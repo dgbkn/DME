@@ -1,18 +1,18 @@
-// src/components/ImageUploadForm.js
-
-import  { useState } from 'react';
-import { Box, Button, Input, Text, Center } from '@chakra-ui/react';
+import { useState } from 'react';
+import { Box, Button, Input, Text, Center, Progress } from '@chakra-ui/react';
 import axios from 'axios';
+import BarChart from '../BarChart';
 
 const ImageUploadForm = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [output, setOutput] = useState(null);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
-    setOutput(null); // Clear previous output
-    setError(null); // Clear previous error
+    setOutput(null);
+    setError(null);
   };
 
   const handleUpload = async () => {
@@ -25,11 +25,15 @@ const ImageUploadForm = () => {
     formData.append('image', selectedFile);
 
     try {
+      setLoading(true); // Start loading
+
       const response = await axios.post('http://localhost:5000/predict', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
+
+      setLoading(false); // Stop loading
 
       if (response.data.error) {
         setError(response.data.error);
@@ -37,6 +41,7 @@ const ImageUploadForm = () => {
         setOutput(response.data);
       }
     } catch (error) {
+      setLoading(false); // Stop loading
       console.error('Error:', error);
       setError("An error occurred while processing the image.");
     }
@@ -49,11 +54,12 @@ const ImageUploadForm = () => {
         <Button onClick={handleUpload} mt={3} colorScheme="teal">
           Upload and Predict
         </Button>
+        {loading && <Progress size="xs" isIndeterminate colorScheme="teal" mt={3} />}
         {error && <Text color="red">{error}</Text>}
         {output && (
           <Box mt={4}>
             <Text>Class: {output.class}</Text>
-            <Text>Confidence: {output.confidence}</Text>
+            <BarChart confidence={output.confidence} />
           </Box>
         )}
       </Box>

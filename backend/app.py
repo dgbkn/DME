@@ -59,10 +59,19 @@ def predict():
                     obj = MyModel()
                     prediction,probality = obj.getLearn(FOLDER_PATIENT)
                     str_p= ""
-                    for label, prob in probality:
-                        # str_p = str_p + str(labels[int(label)]) + " 's Probability is " + str(int(prob*100)) +  "%,"
-                        str_p = str(int(prob*100)) +  "%,"
-                        
+                    probsR = {}
+                    
+                    probs_list = [f"{str(prob*100)}" for label, prob in probality]
+
+                    # # Join the list with commas to create a comma-separated string
+                    str_p = ', '.join(probs_list)
+
+                    # for label, prob in probality:
+                    #     # str_p = str_p + str(labels[int(label)]) + " 's Probability is " + str(int(prob*100)) +  "%,"
+                    #     p = str(int(prob*100))
+                    #     probsR = probsR.append(p)
+                    
+                    # str_p = probsR.join(',')
                     print(str_p)
                     return json.dumps({"class": labels[prediction], "confidence": str_p})
                 except Exception as e:
