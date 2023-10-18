@@ -1,0 +1,6 @@
+flask
+fastai
+seaborn
+scikit-learn
+flask-cors
+shutil
