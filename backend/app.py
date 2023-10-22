@@ -61,10 +61,13 @@ def predict():
                     str_p= ""
                     probsR = {}
                     
-                    probs_list = [f"{str(prob*100)}" for label, prob in probality]
+                    str_p = ','.join([f'{t[1]:.8f}' for t in sorted(probality, key=lambda x: int(x[0]))])
+                    
 
-                    # # Join the list with commas to create a comma-separated string
-                    str_p = ', '.join(probs_list)
+                    # probs_list = [f"{str(prob*100)}" for label, prob in probality]
+
+                    # # # Join the list with commas to create a comma-separated string
+                    # str_p = ', '.join(probs_list)
 
                     # for label, prob in probality:
                     #     # str_p = str_p + str(labels[int(label)]) + " 's Probability is " + str(int(prob*100)) +  "%,"

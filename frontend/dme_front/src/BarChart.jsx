@@ -2,9 +2,9 @@ import ReactApexChart from "react-apexcharts";
 
 function BarChart({confidence}) {
     console.log(confidence);
- var h = confidence.split(",")[1];
- var s1 = confidence.split(",")[2];
- var s2 = confidence.split(",")[0];
+ var h = confidence.split(",")[0];
+ var s1 = confidence.split(",")[1];
+ var s2 = confidence.split(",")[2];
 
   var barGraph = {
     series: [
