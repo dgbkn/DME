@@ -1,21 +1,17 @@
 import './App.css'
-import { ChakraProvider, CSSReset, Box, Container, Heading } from '@chakra-ui/react';
-import ImageUploadForm from './components/ImageUploadForm';
+import { ChakraProvider, CSSReset} from '@chakra-ui/react';
+import Home from './Home';
+import NavBar from './components/NavBar';
 
 function App() {
 
   return (
     <>
+
    <ChakraProvider>
       <CSSReset />
-      <Container>
-        <Box p={5} borderWidth="1px" borderRadius="lg">
-          <Heading as="h1" size="xl" textAlign="center">
-            DME - Image Classifier
-          </Heading>
-          <ImageUploadForm />
-        </Box>
-      </Container>
+      <NavBar/>
+       <Home/>
     </ChakraProvider>
     </>
   )
