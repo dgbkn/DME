@@ -57,13 +57,13 @@ const DMEForm = () => {
 
                             <FormControl>
                                 <FormLabel>Gender:</FormLabel>
-                                <Checkbox name="gender" value="Male" isChecked={formData.gender === 'Male'} onChange={handleInputChange}>
+                                <Checkbox name="gender" value="Male" onChange={handleInputChange}>
                                     Male
                                 </Checkbox>
-                                <Checkbox name="gender" value="Female" isChecked={formData.gender === 'Female'} onChange={handleInputChange}>
+                                <Checkbox name="gender" value="Female" onChange={handleInputChange}>
                                     Female
                                 </Checkbox>
-                                <Checkbox name="gender" value="Other" isChecked={formData.gender === 'Other'} onChange={handleInputChange}>
+                                <Checkbox name="gender" value="Other" onChange={handleInputChange}>
                                     Other
                                 </Checkbox>
                             </FormControl>
