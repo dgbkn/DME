@@ -1,5 +1,6 @@
 import { Box, Container, Heading } from "@chakra-ui/react";
 import ImageUploadForm from "./components/ImageUploadForm";
+import DMEForm from "./components/DMEForm";
 
 function Home() {
   return (
@@ -232,7 +233,7 @@ function Home() {
           <Heading as="h1" size="xl" textAlign="center">
             Upload Image
           </Heading>
-          <ImageUploadForm />
+          <DMEForm />
         </Box>
       </Container>
     </>
