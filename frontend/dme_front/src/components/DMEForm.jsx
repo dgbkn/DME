@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import { Box, Button, Checkbox, FormControl, FormLabel, Input, Select, Text, Textarea, Center } from '@chakra-ui/react';
 import ImageUploadForm from './ImageUploadForm';
 
@@ -32,6 +32,13 @@ const DMEForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        // Check for required fields
+        if (!formData.name || !formData.age || !formData.diabetesType || !formData.email) {
+            alert('Please fill in all required fields before submitting.');
+            return;
+        }
+
         setSubmitted(true);
 
         // You can handle the form submission here
