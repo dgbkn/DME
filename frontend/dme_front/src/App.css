@@ -941,7 +941,9 @@ body.nobg .section1 {
   padding: 0;
   color: #ffffff !important;
 }
-
+#listI{
+ padding: 20px; 
+}
 .transparent-wrap .general-title hr {
   background-color: #ffffff;
 }
