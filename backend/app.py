@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify,send_from_directory
 from flask_cors import CORS
 import os
 from PIL import Image
@@ -13,14 +13,19 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 from image_processing import extract_green_channel
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='./build')
 
 CORS(app)
 
-
-@app.route('/')
-def hello():
-    return '<h1>Hello, World!</h1>'
+# Serve React App
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve(path):
+    if path != "" and os.path.exists(app.static_folder + '/' + path):
+        return send_from_directory(app.static_folder, path)
+    else:
+        return send_from_directory(app.static_folder, 'index.html')
+    
 
 
 @app.route("/predict", methods=["POST"])
