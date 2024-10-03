@@ -20,7 +20,7 @@ RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
 # Download and unzip the zip file from Dropbox
 RUN wget "https://dl.dropboxusercontent.com/scl/fi/lidf2357xny5v7eb6f9ly/Train.zip?rlkey=2gj8n9qy6hpu2okklkni91j2y&st=molowtgi&dl=0" -O Train.zip \
-    && unzip Train.zip -d /app/train_data \
+    && unzip Train.zip -d /app/Train \
     && rm Train.zip
 
 RUN wget "https://dl.dropboxusercontent.com/scl/fi/30gqqx9cugolzq4f53jc9/model?rlkey=4b94figx1nromgtxzsu9c48h1&st=cb7omzbk&dl=0" -O model
