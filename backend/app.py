@@ -17,6 +17,10 @@ app = Flask(__name__, static_folder='./build')
 
 CORS(app)
 
+
+import pathlib
+pathlib.WindowsPath = pathlib.PosixPath
+
 # Serve React App
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
