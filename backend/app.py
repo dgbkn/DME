@@ -53,7 +53,7 @@ def predict():
 
             file_path = os.path.join(FOLDER_PATIENT, file.filename)
             file.save(file_path)
-            labels = {0:"Healthy", 1:"Stage 1", 2:"Stage 2"};
+            labels = {0:"Healthy", 1:"Stage 1", 2:"Stage 2"}
             # try:
             #     img = Image.open(file_path)
             # except Exception as e:
@@ -84,9 +84,9 @@ def predict():
                     return json.dumps({"class": labels[prediction], "confidence": str_p})
                 except Exception as e:
                     print(e)
-                    return jsonify({"error": "Failed to process the image"})
+                    return jsonify({"error": "Failed to process the image " + str(e)})
             else:
-                return jsonify({"error": "Failed to process the image"})
+                return jsonify({"error": "Failed to process the image no err"})
     except Exception as e:
         print(e)
         return jsonify({"error": str(e)})
